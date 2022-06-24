@@ -1,0 +1,1 @@
+# django-crudv0.1
