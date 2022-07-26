@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.urls import reverse
 from django.template.defaultfilters import slugify
+
 # Create your models here.
 
 
@@ -20,7 +21,7 @@ class Post(models.Model):
         get_user_model(), on_delete=models.CASCADE, related_name="blog_posts"
     )
     body = models.TextField()
-
+    image = models.ImageField(upload_to='images/')
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -42,4 +43,11 @@ class Post(models.Model):
     
     def get_absolute_url(self):
         return reverse("blog:post_detail", kwargs={"slug": self.slug})
+
+
+# models.py
+class Hotel(models.Model):
+	name = models.CharField(max_length=50)
+	hotel_Main_Img = models.ImageField(upload_to='images/')
+
     
