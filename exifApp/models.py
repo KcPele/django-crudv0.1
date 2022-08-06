@@ -43,21 +43,23 @@ class FileUpload(models.Model):
         source='file',
     )
 
-    # def get_absolute_url(self):
-    #     """
-    #     The url for each file
-    #     Can be accessed through file_details
-    #     """
-    #     return reverse('file_detail', kwargs={'pk': self.id})
+    def get_absolute_url(self):
+        return reverse('details', kwargs={'pk': self.id})
     
     def __unicode__(self):
         return self.title
     
     def __str__(self):
         return self.title
-    
+
+
+class ExtractedData(models.Model):
+    name = models.CharField(max_length=50, blank=True, null=True)
 
 @receiver(pre_save, sender=FileUpload)
 def uploadImage(sender, instance, **kwargs):
-    print(instance.exif)
- 
+    result  = instance.exif
+    new_result = []
+    for result_id, result_val in result.items():
+        print(type(result_val))
+        new_result.append(result_val)
