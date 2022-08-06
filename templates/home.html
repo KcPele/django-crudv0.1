@@ -14,7 +14,14 @@
         For the THETA API test, you must have the THETA connected to your 
         workstation or laptop with Wi-Fi.
         <ul>
-            <li><a href="{% url 'exif' %}">exif data</a></li>
+           {% if  request.user.is_authenticated %}
+                {{ request.user.username }}
+                {% for file in file_list %}
+                   <p>{{ file.title }}</p>
+                 <img width="200px" src={{file.file.url}} />
+                {% endfor %}
+                
+           {% endif %}
         </ul>
     
 </body>

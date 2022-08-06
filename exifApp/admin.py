@@ -1,5 +1,4 @@
 from django.contrib import admin
-from .models import UploadImage, User_Profile
+from .models import FileUpload
 
-admin.site.register(UploadImage)
-admin.site.register(User_Profile)
+admin.site.register(FileUpload)

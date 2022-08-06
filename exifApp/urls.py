@@ -1,9 +1,8 @@
 
 from django.urls import path
-from . import views
+from .views import Home
 
 urlpatterns = [
-    path('', views.homepage),
-    path('exif/', views.create_profile, name='exif'),
+    path('', Home.as_view(template_name='home.html'), name='home')
 
 ]
